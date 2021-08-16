@@ -1,0 +1,22 @@
+{{ define "main" }}
+<main class="main list" role="main">
+	{{- with .Title }}
+	<header class="main__header">
+		<h1 class="main__title">{{ . }}</h1>
+	</header>
+	{{- end }}
+	{{- with .Content }}
+	<div class="content main__content clearfix">
+		{{ . }}
+	</div>
+	{{- end }}
+	{{ if (not (isset .Params "hidelist")) }} <!--jtf add-->
+	{{- range (where .Pages ".Params.unlisted" "!=" "true") }}
+		{{- .Render "summary" }}
+	{{- end }}
+	{{ end }} <!--jtf add-->
+</main>
+{{ if (not (isset .Params "hidelist")) }} <!--jtf add-->
+{{ partial "pagination.html" . }}
+{{ end }} <!--jtf add-->
+{{ end }}
