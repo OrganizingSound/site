@@ -1,7 +1,13 @@
 <header class="header">
 	<div class="container header__container">
 		{{ partial "logo.html" . }}
-		{{ partial "empty-menu.html" . }}
-		<!-- {{ partial "menu.html" . }} -->
 	</div>
+
+	<script>
+		$(function () {
+		  if (location.pathname.indexOf('/index') >= 0) {
+			$('link[href*="/media/css/csspagename.css"]').prop('disable', true);
+		  }
+		});
+		</script>
 </header>
